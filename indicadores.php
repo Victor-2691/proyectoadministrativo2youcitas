@@ -1,30 +1,6 @@
 <?php
 
 session_start();
-include_once 'db.php';
-$correousuarioautenticado = $_SESSION['nombredelusuario'];
-
-$query = mysqli_query($db,"SELECT u.id_cliente, c.nombre, c.primer_apellido FROM Usuarios_Clientes_Externo u join Clientes_Externos c
-on u.id_cliente = c.id_cliente WHERE u.correo_electronico = '$correousuarioautenticado'");
-
-//esta  variable es para contar las filas del query
-foreach ($query  as $key => $opciones) :
-    $idcliente = $opciones['id_cliente'];  
-    $nombre = $opciones['nombre'];
-endforeach;
-
-$_SESSION['idcliente'] = $idcliente;
-$_SESSION['nombre'] = $nombre;
-$nombreusuario = $_SESSION['nombre'];
-
-
-if(isset($_SESSION['nombredelusuario'])){
-    $usuarioingresado = $_SESSION['nombredelusuario'];
-    //echo "<h1>Bienvanido: $usuarioingresado </h1>";
-}else{
-    header('location: inicio_sesion.php');
-}
-
 
 
 ?>
