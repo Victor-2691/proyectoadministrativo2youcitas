@@ -24,28 +24,37 @@ if ($ejecutar->num_rows) {
     $consulta = mysqli_fetch_assoc($ejecutar);
 
     if ($Usario == $consulta['correo_electronico'] &&  $contra == $consulta['contrasena']) {
-       
+
         session_start();
 
         $_SESSION['idusuario'] = $consulta['id_cliente'];
         $_SESSION['id_rol'] = $consulta['id_rol'];
         $_SESSION['nombre'] = $consulta['nombre'];
         $_SESSION['apellido'] = $consulta['primer_apellido'];
+        $_SESSION['login'] = true;
+        
+        if( $_SESSION['id_rol'] == 1){
+            header("location: perfiles.php");
+        }
+
+        if( $_SESSION['id_rol'] == 2){
+            header("location: indicadores.php");
+        }
+
+        if( $_SESSION['id_rol'] == 3){
+            header("location: administrador.php");
+        }
         // Llenar el arreglo de la sesion
 
 
-       
-        echo  "<script>alert('Usuario Correcto');</script>";
-                 
-   
+
+
+
     } else {
         echo  "<script>alert('Usuario o contra incorrectas');</script>";
     }
-
-
-    
 } else {
-    echo  "<script>alert('El usuario no existe');</script>";
+ 
 }
 
 ?>
@@ -93,3 +102,4 @@ if ($ejecutar->num_rows) {
 </body>
 
 </html>
+
