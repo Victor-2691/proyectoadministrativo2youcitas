@@ -10,7 +10,32 @@ $consulta = "SELECT count(*) FROM suspiros";
 $ejecutar = mysqli_query($db, $consulta);
 $Resultado = mysqli_fetch_assoc($ejecutar);
 $TotalSuspiros = $Resultado['count(*)'];
-echo $TotalSuspiros;
+
+$consulta = "SELECT count(*) FROM likes";
+$ejecutar = mysqli_query($db, $consulta);
+$Resultado = mysqli_fetch_assoc($ejecutar);
+$Totalikes = $Resultado['count(*)'];
+
+$consulta = "
+SELECT count(id_cliente) FROM Clientes_Externos where id_genero_pertenece = 1";
+$ejecutar = mysqli_query($db, $consulta);
+$Resultado = mysqli_fetch_assoc($ejecutar);
+$TotalHombres = $Resultado['count(id_cliente)'];
+
+$consulta = "
+SELECT count(id_cliente) FROM Clientes_Externos where id_genero_pertenece = 3";
+$ejecutar = mysqli_query($db, $consulta);
+$Resultado = mysqli_fetch_assoc($ejecutar);
+$TotalBinarios = $Resultado['count(id_cliente)'];
+
+
+$consulta = "
+SELECT count(id_cliente) FROM Clientes_Externos where id_genero_pertenece = 2";
+$ejecutar = mysqli_query($db, $consulta);
+$Resultado = mysqli_fetch_assoc($ejecutar);
+$TotalMujeres = $Resultado['count(id_cliente)'];
+
+
 
 ?>
 
@@ -18,6 +43,10 @@ echo $TotalSuspiros;
 
     <div class="container_perfil">
         <p hidden id="hiddensuspiros"> <?php echo $TotalSuspiros ?> </p>
+        <p hidden id="hiddenlikes"> <?php echo $Totalikes  ?> </p>
+        <p hidden id="hiddenHombres"> <?php echo $TotalHombres ?> </p>
+        <p hidden id="hiddenBinarios"> <?php echo $TotalBinarios ?> </p>
+        <p hidden id="hiddenMujeres"> <?php echo $TotalMujeres ?> </p>
         <div class="row">
             <div class="col-md-4 col-xl-3">
                 <div class="card bg-c-blue order-card">
@@ -50,7 +79,7 @@ echo $TotalSuspiros;
             <div class="col-md-4 col-xl-3">
                 <div class="card bg-c-yellow order-card">
                     <div class="card-block">
-                        <h6 class="m-b-20">Me gustas enviados</h6>
+                        <h6 class="m-b-20">Total Likes</h6>
                         <img src="build/img/LikeNegro.svg">
                         <h2 class="text-right"><i class="fa fa-refresh f-left"></i>
                             <span id="likes">0</span>
@@ -109,22 +138,32 @@ echo $TotalSuspiros;
 <script>
     function onPageLoad() {
         let totalsuspiroshidden = document.getElementById('hiddensuspiros').innerText;
-        console.log(totalsuspiroshidden)
+        let totalikeshidden = document.getElementById('hiddenlikes').innerText;
+        let totalhombreshidden = document.getElementById('hiddenHombres').innerText;
+        let totalbinarios = document.getElementById('hiddenBinarios').innerText;
+        let totalfemenino = document.getElementById('hiddenMujeres').innerText;
         // Obtener el elemento del DOM que muestra el total
         var totalElement = document.getElementById('suspiros');
-        var totalElement = document.getElementById('coincidencias');
-  
+        var totalcoicidencias = document.getElementById('coincidencias');
+        var variableLike = document.getElementById('likes');
+        var elementomasculino = document.getElementById('masculinos');
+        var elementobinario = document.getElementById('nobinarios');
+        var elemenFemenino = document.getElementById('femeninos');
+
         // Valor de inicio y valor objetivo del total
         var startValue = 0;
-        startIncrement(totalsuspiroshidden,totalElement);
-        
-        
-        
+        startIncrement(startValue, totalsuspiroshidden, totalElement);
+        startIncrement(startValue, 80, totalcoicidencias);
+        startIncrement(startValue, totalikeshidden, variableLike);
+        startIncrement(startValue, totalhombreshidden, elementomasculino);
+        startIncrement(startValue, totalbinarios, elementobinario);
+        startIncrement(startValue, totalfemenino, elemenFemenino);
+
+
         // Función para iniciar el incremento
-        function startIncrement(totalsuspiros,totalElement ) {
+        function startIncrement(startValue, totalsuspiros, totalElement) {
             var intervalId = setInterval(function() {
                 var valorint = parseInt(totalsuspiros);
-                console.log(valorint);
                 // Incrementar el valor de inicio en 1
                 startValue++;
 
@@ -136,7 +175,7 @@ echo $TotalSuspiros;
 
                     clearInterval(intervalId);
                 }
-            }, 30); // Puedes ajustar el intervalo de tiempo (en milisegundos) para controlar la velocidad de incremento
+            }, 20); // Puedes ajustar el intervalo de tiempo (en milisegundos) para controlar la velocidad de incremento
         }
 
 
