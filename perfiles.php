@@ -16,7 +16,17 @@ session_start();
     <title>Document</title>
 </head>
 <body>
-<h1>Gestor de perfiles</h1>    
+<h1>Datos generales</h1>
+   <form action="emparejar.php" method="get">
+  <p>Nombre: <input type="text" name="nombre" size="40"></p>
+  <p>Sexo:
+    <input type="radio" name="hm" value="h"> Hombre
+    <input type="radio" name="hm" value="m"> Mujer
+  </p>
+  <p>
+    <input type="submit" value="Guardar">
+  </p>
+</form>
 
 <footer class="footer">
     <div class="contenedor contenedor-footer">
