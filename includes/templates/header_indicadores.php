@@ -27,9 +27,12 @@ So es true mostramos el header inicio que tiene la imagen -->
                 <div class="derecha">
                 
                     <nav class="navegacion">
-                        <a href="index.php">Inicio</a>
-                        <a href="inicio_sesion.php">Iniciar Sesión</a>
-                        <a href="registro.php">Registrarse</a>
+                        <a href="indicadores.php">Inicio</a>
+                        <a href="graficos.php">Graficos</a>
+                        <p id="nombre_usuario"> Indicadores/Victor </p>
+                        <a href="salir.php">
+                            <img class="iconos35f" src="build/img/cerrar-sesion.png" />
+                        </a>
                        
                     </nav>
                 </div>
