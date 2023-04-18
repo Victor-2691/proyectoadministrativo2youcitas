@@ -1,19 +1,8 @@
-.no-webp .inicio {
-    background-image: url(../img/4525-Herramientas-digitales-para-el-diseño-gráfico.jpg);
-}
-.webp .inicio {
-    background-image: url(../img/4525-Herramientas-digitales-para-el-diseño-gráfico.jpg);
-}
-
 .header {
-    background-color: $grisOscuro;
-    padding: 1rem 0 3rem 0;
-
+    background-color: $negro;
     .barra {
         a {
-            img {
-                min-width: 20rem;
-            }
+            font-weight: $bold;
         }
     }
 
@@ -34,10 +23,6 @@
 }
 
 .contenido-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
     h1 {
         text-align: left;
         color: $blanco;
@@ -45,4 +30,55 @@
         line-height: 2;
         max-width: 60rem;
     }
+
+    #nombre_usuario{
+        color: $blanco;
+    }
+}
+
+.header_interno {
+    display: none;
+    @include tablet {
+        display: inline;
+    }
+}
+
+.header_movil {
+    display: block;
+    // margin-bottom: 1rem;
+    .btntema {
+       
+        height: 20px;
+        // Filter permite crear efectos invierte el color aplicado
+        filter: invert(100%);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    img {
+        height: 60px;
+       
+    }
+
+    @include tablet {
+        display: none;
+    }
+}
+
+.logo_movil{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.menu-fixed {
+    position: fixed;
+    // Para que se ponga encima de todos los elementos
+    z-index: 1000;
+    top: 0;
+    width: 100%;
+    max-width: 1000px;
+    box-shadow: 0px 4px 3px rgba(0, 0, 0.5);
 }

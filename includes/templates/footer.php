@@ -6,18 +6,7 @@
         $fecha =  date('Y');
         ?>
         <p class="copyright">Todos los derechos Reservados <?php echo date('Y') ?> &copy;</p>
-        <a href="#" target="_blank">
-            <img class="footer " src="build/img/icons8-facebook.svg" alt="icono-facebook">
-        </a>
-        <a href="#" target="_blank">
-            <img class="footer " src="build/img/icons8-instagram.svg" alt="icono-telegran">
-
-        </a>
-
-        <a href="https://wa.me/50671381640?text=Hola%20escribo%20a%20la%20linea%20de%20soporte%20ya%20que%20necesito%20ayuda%20con%20el%20siguiente%20tema" target="_blank">
-            <img src="build/img/icons8-whatsapp (7).svg" alt="icono-What">
-
-        </a>
+   
     </div>
 
 </footer>
